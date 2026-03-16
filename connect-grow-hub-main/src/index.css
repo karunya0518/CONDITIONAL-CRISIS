@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 40% 98%;
+    --foreground: 222 47% 11%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 270 75% 56%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+    --accent: 187 92% 43%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 217 91% 60%;
+    --radius: 0.75rem;
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 222 47% 11%;
+    --sidebar-primary: 217 91% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 210 40% 96%;
+    --sidebar-accent-foreground: 222 47% 11%;
+    --sidebar-border: 214 32% 91%;
+    --sidebar-ring: 217 91% 60%;
+
+    --glass-bg: 0 0% 100% / 0.7;
+    --glass-border: 0 0% 100% / 0.2;
+    --glass-blur: 12px;
+    --gradient-primary: linear-gradient(135deg, hsl(217 91% 60%), hsl(270 75% 56%));
+    --gradient-accent: linear-gradient(135deg, hsl(270 75% 56%), hsl(187 92% 43%));
+    --gradient-hero: linear-gradient(135deg, hsl(217 91% 60% / 0.08), hsl(270 75% 56% / 0.06), hsl(187 92% 43% / 0.04));
+    --shadow-glass: 0 8px 32px hsl(217 91% 60% / 0.1);
+    --shadow-elevated: 0 20px 60px hsl(217 91% 60% / 0.15);
+
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  .dark {
+    --background: 222 47% 6%;
+    --foreground: 210 40% 96%;
+    --card: 222 47% 9%;
+    --card-foreground: 210 40% 96%;
+    --popover: 222 47% 9%;
+    --popover-foreground: 210 40% 96%;
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 270 75% 56%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 217 33% 15%;
+    --muted-foreground: 215 20% 65%;
+    --accent: 187 92% 43%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217 33% 18%;
+    --input: 217 33% 18%;
+    --ring: 217 91% 60%;
+    --sidebar-background: 222 47% 9%;
+    --sidebar-foreground: 210 40% 96%;
+    --sidebar-primary: 217 91% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 217 33% 15%;
+    --sidebar-accent-foreground: 210 40% 96%;
+    --sidebar-border: 217 33% 18%;
+    --sidebar-ring: 217 91% 60%;
+
+    --glass-bg: 222 47% 9% / 0.7;
+    --glass-border: 0 0% 100% / 0.1;
+    --gradient-hero: linear-gradient(135deg, hsl(217 91% 60% / 0.12), hsl(270 75% 56% / 0.08), hsl(187 92% 43% / 0.06));
+    --shadow-glass: 0 8px 32px hsl(0 0% 0% / 0.3);
+    --shadow-elevated: 0 20px 60px hsl(0 0% 0% / 0.4);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Outfit', sans-serif;
+  }
+}
+
+@layer components {
+  .glass-card {
+    background: hsl(var(--glass-bg));
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid hsl(var(--glass-border));
+    box-shadow: var(--shadow-glass);
+  }
+  .gradient-text {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .gradient-bg {
+    background: var(--gradient-primary);
+  }
+  .gradient-accent-bg {
+    background: var(--gradient-accent);
+  }
+  .mesh-gradient {
+    background: var(--gradient-hero);
+  }
+  .glow-focus {
+    @apply transition-all duration-300;
+  }
+  .glow-focus:focus {
+    box-shadow: 0 0 0 3px hsl(187 92% 43% / 0.3);
+    border-color: hsl(187 92% 43%);
+  }
+  .hover-lift {
+    @apply transition-all duration-300;
+  }
+  .hover-lift:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: var(--shadow-elevated);
+  }
+  .btn-glow {
+    @apply transition-all duration-200;
+  }
+  .btn-glow:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px hsl(217 91% 60% / 0.4);
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: 'Outfit', sans-serif;
+  }
+  .font-body {
+    font-family: 'Inter', sans-serif;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
